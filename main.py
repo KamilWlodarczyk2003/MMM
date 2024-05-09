@@ -2,10 +2,15 @@ import os
 from tkinter import *
 from tkinter import messagebox
 import matplotlib.pyplot as plt
+import time
 
 BG_COLOR = "#f7e8bc"
 TEXT_COLOR = "#141414"
 INPUT_COLOR = "#5e5c5c"
+
+x1_values=[]
+x2_values=[]
+t_values=[]
 
 def check_buttons(sin_var, skok_var):
     
@@ -26,6 +31,7 @@ def check_buttons(sin_var, skok_var):
     elif sin.get() == True:
         okres_input.place(x=700, y =425)
         okres_text.place(x= 650, y=425)
+        okres_input.delete(0, END)
         okres_input.insert(0,"s")
     
 def file_handeling(czy_sinus, dane):
@@ -41,6 +47,9 @@ def file_handeling(czy_sinus, dane):
             file.writelines(f"{value}\n")
             
     os.startfile("projekt_mmm.exe")
+    
+    time.sleep(2)
+    read_exit_file()
     
 def button_click():
     global sin
@@ -69,13 +78,41 @@ def button_click():
             dane[key] = float(value)
     except:
         is_working = False
-        messagebox.showerror(title=None, message=f"Błędna dana: {aktualna_zmienna}" )
+        messagebox.showerror(title=None, message=f"Błędna wartość: {aktualna_zmienna}" )
         
     if is_working == True:
         file_handeling(is_sin, dane)
     
 def read_exit_file():
-    pass
+    t_values.clear()
+    x1_values.clear() 
+    x2_values.clear()
+    with open("wyjscie.txt", "r") as file:
+        list = file.readlines()
+        
+
+    for line in list:
+        if line != "":
+            draft_list = line.split(";")
+            t_values.append(float(draft_list[0]))
+            x1_values.append(float(draft_list[1]))
+            x2_values.append(float(draft_list[2]))
+        print(line)
+        
+    create_graph()
+
+def create_graph():
+
+    plt.clf()
+    #plt.close()
+    plt.plot(t_values, x1_values, label = "X1")
+    plt.plot(t_values, x2_values, label = "X2")
+    plt.legend() 
+    plt.show()
+    
+    
+
+
 
 window = Tk()
 window.title("Projekt MMM")
