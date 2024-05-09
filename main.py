@@ -1,6 +1,7 @@
 import os
 from tkinter import *
 from tkinter import messagebox
+import matplotlib.pyplot as plt
 
 BG_COLOR = "#f7e8bc"
 TEXT_COLOR = "#141414"
@@ -73,7 +74,8 @@ def button_click():
     if is_working == True:
         file_handeling(is_sin, dane)
     
-    
+def read_exit_file():
+    pass
 
 window = Tk()
 window.title("Projekt MMM")
