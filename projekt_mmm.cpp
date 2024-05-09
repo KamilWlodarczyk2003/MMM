@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#define Pi 3.141592
+#define PI 3.141592
 using namespace std;
 
 int main(){
