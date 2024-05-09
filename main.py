@@ -6,7 +6,7 @@ import time
 
 BG_COLOR = "#f7e8bc"
 TEXT_COLOR = "#141414"
-INPUT_COLOR = "#5e5c5c"
+INPUT_COLOR = "#143d59"
 
 x1_values=[]
 x2_values=[]
@@ -97,7 +97,7 @@ def read_exit_file():
             t_values.append(float(draft_list[0]))
             x1_values.append(float(draft_list[1]))
             x2_values.append(float(draft_list[2]))
-        print(line)
+        #print(line)
         
     create_graph()
 
