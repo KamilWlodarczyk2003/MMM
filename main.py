@@ -1,5 +1,6 @@
 import os
 from tkinter import *
+from tkinter import messagebox
 
 BG_COLOR = "#f7e8bc"
 TEXT_COLOR = "#141414"
@@ -26,24 +27,51 @@ def check_buttons(sin_var, skok_var):
         okres_text.place(x= 650, y=425)
         okres_input.insert(0,"s")
     
-def file_handeling(czy_sinus,m1,m2,k1,k2,b1,b2,A,T):
-    output = open("dane.txt","wt")
-    if czy_sinus!=0:
-         output.write(f"{czy_sinus}"+"\n"+f"{T}"+"\n"+f"{A}"+"\n"+f"{m1}"+"\n"+f"{m2}"+"\n"+f"{k1}"+"\n"+f"{k2}"+"\n"+f"{b1}"+"\n"+f"{b2}")
-    else:
-         output.write(f"{czy_sinus}"+"\n"+f"{A}"+"\n"+f"{m1}"+"\n"+f"{m2}"+"\n"+f"{k1}"+"\n"+f"{k2}"+"\n"+f"{b1}"+"\n"+f"{b2}")
-    output.close()
-    os.system("projekt_mmm.cpp")
-    input == open("wyjscie.txt")
-
-
-    #tutaj dane do plotów
-
-
-    input.close()
-
-
-
+def file_handeling(czy_sinus, dane):
+    
+    with open("dane.txt", "wt") as file:
+        if czy_sinus:
+            file.writelines("1\n")
+        else:
+            file.writelines("0\n")
+            
+            
+        for key, value in dane.items():
+            file.writelines(f"{value}\n")
+            
+    os.startfile("projekt_mmm.exe")
+    
+def button_click():
+    global sin
+    
+    aktualna_zmienna = ""
+    is_working = True
+    is_sin = False 
+    
+    dane = {
+        "k1":k1_entry.get(),
+        "k2":k2_entry.get(),
+        "m1":m1_entry.get(),
+        "m2":m2_entry.get(),
+        "b1":b1_entry.get(),
+        "b2":b2_entry.get(),
+        "amp": amplituda_input.get(),
+    }
+    if(sin.get() == True):
+        is_sin = True
+        dane["okres"] = okres_input.get()
+        
+    try:
+        for key, value in dane.items():
+            aktualna_zmienna = key
+            dane[key] = float(value)
+    except:
+        is_working = False
+        messagebox.showerror(title=None, message=f"Błędna dana: {aktualna_zmienna}" )
+        
+    if is_working == True:
+        file_handeling(is_sin, dane)
+    
     
 
 window = Tk()
@@ -104,7 +132,7 @@ okres_text = Label(text="Okres:", font=("Coco Gothic", 10, 'bold'), fg=TEXT_COLO
 okres_text.place(x= 650, y=425)
 
 calculate_button = Button(window, text="Wykonaj wykres", height=2, width=20, bg=INPUT_COLOR, font=("Coco Gothic", 10, 'bold'), fg="white", 	
-activebackground = "#a19c9c")
+activebackground = "#a19c9c", command= button_click)
 calculate_button.place(x=380, y=415)
 
 
