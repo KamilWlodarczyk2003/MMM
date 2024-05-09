@@ -12,7 +12,7 @@ double m1,m2,k1,k2,b1,b2,X1,u,X2,dT=0.1,V1,V2,A1,A2,a,T;
 bool czy_sinusoida;
 wejscie>>czy_sinusoida;
 if(czy_sinusoida){
-	wejscie>>T>>a>>m1>>m2>>k1>>k2>>b1>>b2;
+	wejscie>>a>>m1>>m2>>k1>>k2>>b1>>b2>>T;
 }else{
 	wejscie>>a>>m1>>m2>>k1>>k2>>b1>>b2;
 }
@@ -28,7 +28,7 @@ u=a;
 	
 for(int i=0;i<1000;i++){
 	if(czy_sinusoida){
-		u=a*sin((1/T)*2*PI*dT*i)+a;
+		u=a*sin((1/T)*2*PI*dT*i)+a+1;
 	}
 	A2=u/m2-(X2-X1)*k2/m2-(V2-V1)*b2/m2;
 	A1=-k1*X1/m1+k2*(X2-X1)/m1-b1*V1/m1+b2*(V2-V1)/m1;
