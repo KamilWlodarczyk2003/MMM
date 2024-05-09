@@ -17,6 +17,15 @@ def check_buttons(sin_var, skok_var):
         skok.set(True)
         sin.set(False)
     
+    if skok.get() == True:
+        okres_input.delete(0, END)
+        okres_input.place_forget()
+        okres_text.place_forget()
+    elif sin.get() == True:
+        okres_input.place(x=700, y =425)
+        okres_text.place(x= 650, y=425)
+        okres_input.insert(0,"s")
+    
         
 
 window = Tk()
@@ -25,9 +34,9 @@ window.config(bg=BG_COLOR)
 window.geometry("900x700")
 
 main_title = Label(text="Projekt MMM - zadanie 6", font=("Coco Gothic", 30, 'bold'), fg=TEXT_COLOR, bg=BG_COLOR)
-main_title.place(x=200, y=10)
+main_title.place(x=200, y=40)
 
-sin = BooleanVar()
+sin = BooleanVar(value= True)
 skok = BooleanVar()
 
 main_photo_canvas = Canvas(width=850, height=344, bg="black", highlightthickness=0)
@@ -66,8 +75,20 @@ sin_check = Checkbutton(window, variable = sin, onvalue= True, offvalue = False,
 sin_check.place(x=400, y =380)
 
 amplituda_input = Entry(window, width=6, bg=INPUT_COLOR, fg="white")
-amplituda_input.place(x=765, y =400)
-amplituda_text = Label(text="Amplituda", font=("Coco Gothic", 20, 'bold'), fg=TEXT_COLOR, bg=BG_COLOR)
-amplituda_text.place()
+amplituda_input.place(x=730, y =401)
+amplituda_text = Label(text="Amplituda:", font=("Coco Gothic", 10, 'bold'), fg=TEXT_COLOR, bg="white")
+amplituda_text.place(x= 650, y=400)
+
+okres_input = Entry(window, width=6, bg=INPUT_COLOR, fg="white")
+okres_input.place(x=700, y =425)
+okres_input.insert(0,"s")
+okres_text = Label(text="Okres:", font=("Coco Gothic", 10, 'bold'), fg=TEXT_COLOR, bg="white")
+okres_text.place(x= 650, y=425)
+
+calculate_button = Button(window, text="Wykonaj wykres", height=2, width=20, bg=INPUT_COLOR, font=("Coco Gothic", 10, 'bold'), fg="white", 	
+activebackground = "#a19c9c")
+calculate_button.place(x=380, y=415)
+
+
 
 window.mainloop()
