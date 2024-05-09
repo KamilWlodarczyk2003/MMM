@@ -49,13 +49,14 @@ def button_click():
     is_sin = False 
     
     dane = {
-        "k1":k1_entry.get(),
-        "k2":k2_entry.get(),
+        "amp": amplituda_input.get(),
         "m1":m1_entry.get(),
         "m2":m2_entry.get(),
+        "k1":k1_entry.get(),
+        "k2":k2_entry.get(),
         "b1":b1_entry.get(),
         "b2":b2_entry.get(),
-        "amp": amplituda_input.get(),
+        
     }
     if(sin.get() == True):
         is_sin = True
