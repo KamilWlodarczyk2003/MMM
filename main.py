@@ -172,7 +172,7 @@ okres_text = Label(text="Okres:", font=("Coco Gothic", 10, 'bold'), fg=TEXT_COLO
 okres_text.place(x= 650, y=425)
 
 calculate_button = Button(window, text="Wykonaj wykres", height=2, width=20, bg=INPUT_COLOR, font=("Coco Gothic", 10, 'bold'), fg="white", 	
-activebackground = "#a19c9c", command= button_click)
+activebackground = "#0e2c40", command= button_click, activeforeground="white")
 calculate_button.place(x=380, y=415)
 
 
