@@ -16,7 +16,7 @@ def check_buttons(sin_var, skok_var):
     elif skok_var == True:
         skok.set(True)
         sin.set(False)
-    
+        
     if skok.get() == True:
         okres_input.delete(0, END)
         okres_input.place_forget()
@@ -26,7 +26,25 @@ def check_buttons(sin_var, skok_var):
         okres_text.place(x= 650, y=425)
         okres_input.insert(0,"s")
     
-        
+def file_handeling(czy_sinus,m1,m2,k1,k2,b1,b2,A,T):
+    output = open("dane.txt","wt")
+    if czy_sinus!=0:
+         output.write(f"{czy_sinus}"+"\n"+f"{T}"+"\n"+f"{A}"+"\n"+f"{m1}"+"\n"+f"{m2}"+"\n"+f"{k1}"+"\n"+f"{k2}"+"\n"+f"{b1}"+"\n"+f"{b2}")
+    else:
+         output.write(f"{czy_sinus}"+"\n"+f"{A}"+"\n"+f"{m1}"+"\n"+f"{m2}"+"\n"+f"{k1}"+"\n"+f"{k2}"+"\n"+f"{b1}"+"\n"+f"{b2}")
+    output.close()
+    os.system("projekt_mmm.cpp")
+    input == open("wyjscie.txt")
+
+
+    #tutaj dane do plotów
+
+
+    input.close()
+
+
+
+    
 
 window = Tk()
 window.title("Projekt MMM")
