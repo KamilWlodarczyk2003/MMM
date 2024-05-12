@@ -122,6 +122,9 @@ window.geometry("900x700")
 main_title = Label(text="Projekt MMM - zadanie 6", font=("Coco Gothic", 30, 'bold'), fg=TEXT_COLOR, bg=BG_COLOR)
 main_title.place(x=200, y=40)
 
+authors_label = Label(text="Autorzy:                                 \nKamil Włodarczyk 193479\nKajetan Zawadka 193563  ", anchor='e', font=("Coco Gothic", 12, 'bold'), fg=TEXT_COLOR, bg=BG_COLOR)
+authors_label.place(x=680, y= 20)
+
 sin = BooleanVar(value= True)
 skok = BooleanVar()
 
