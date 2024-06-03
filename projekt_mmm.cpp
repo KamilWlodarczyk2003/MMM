@@ -32,10 +32,10 @@ for(int i=0;i<1000;i++){
 	}
 	A2=u/m2-(X2-X1)*k2/m2-(V2-V1)*b2/m2;
 	A1=-k1*X1/m1+k2*(X2-X1)/m1-b1*V1/m1+b2*(V2-V1)/m1;
-	V2=V2+A2*dT;
-	V1=V1+A1*dT;
-	X2=X2+V2*dT;
-	X1=X1+V1*dT;
+	V2=V2+(A2/2)*dT;
+	V1=V1+(A1/2)*dT;
+	X2=X2+(V2/2)*dT;
+	X1=X1+(V1/2)*dT;
 	wyjscie<<i*dT<<";";
 	wyjscie<<X1<<";";
 	wyjscie<<X2<<";";
